@@ -15,13 +15,15 @@ export class BoardComponent {
     this.fields[1] = true;
   }
 
-  setValue(index: number, value: boolean): void {
-    if(index < 0 || index > BoardComponent.numCols) {
-      console.log('Zugriff auf falsche Spalte %d', index)
-      return;
-    }
+  flipValue(index: number) {
+    console.log('Index %d flipped', index);
+    this.fields[index] = !this.fields[index];
+  }
 
-    this.fields[index] = value;
+  reset() {
+    console.log('Zurückgesetzt');
+    for(let i=0; i<BoardComponent.numCols; ++i)
+      this.fields[i] = false;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-field',
@@ -11,7 +11,10 @@ export class FieldComponent {
   onoff: boolean = false;
   public color = 'blue';
 
-  public ngOnInit() {
+  @Output()
+  change = new EventEmitter();
+
+  private updateColor() {
     if(this.onoff) {
       this.color = 'red'
     }
@@ -20,14 +23,15 @@ export class FieldComponent {
     }
   }
 
-  public onClick() {
-    this.onoff = !this.onoff;
+  public ngOnInit() {
+    this.updateColor();
+  }
 
-    if(this.onoff) {
-      this.color = 'red'
-    }
-    else {
-      this.color = 'black'
-    }
+  public ngOnChanges(changes: SimpleChanges) {
+    this.updateColor();
+  }
+
+  public onClick() {
+    this.change.emit();
   }
 }
