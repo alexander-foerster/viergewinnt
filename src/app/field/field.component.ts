@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-field',
@@ -6,17 +6,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./field.component.css']
 })
 export class FieldComponent {
-  public color = 'black'
-  private onoff = false;
 
-  public onClick() {
-    if(!this.onoff) {
+  @Input()
+  onoff: boolean = false;
+  public color = 'blue';
+
+  public ngOnInit() {
+    if(this.onoff) {
       this.color = 'red'
     }
     else {
       this.color = 'black'
     }
+  }
 
+  public onClick() {
     this.onoff = !this.onoff;
+
+    if(this.onoff) {
+      this.color = 'red'
+    }
+    else {
+      this.color = 'black'
+    }
   }
 }
