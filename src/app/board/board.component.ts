@@ -9,21 +9,21 @@ export class BoardComponent {
   static readonly numRows = 6;
   static readonly numCols = 7;
 
-  fields: boolean[] = new Array(BoardComponent.numCols).fill(false);
+  // Zeile x Spalte
+  fields: boolean[][] = new Array(BoardComponent.numRows).fill(false).map(x => Array(BoardComponent.numCols).fill(false));
 
   public ngOnInit() {
-    this.fields[1] = true;
+    this.fields[0][1] = true;
   }
 
-  flipValue(index: number) {
-    console.log('Index %d flipped', index);
-    this.fields[index] = !this.fields[index];
+  flipValue(rowIndex: number, colIndex: number) {
+    this.fields[rowIndex][colIndex] = !this.fields[rowIndex][colIndex];
   }
 
   reset() {
-    console.log('Zurückgesetzt');
-    for(let i=0; i<BoardComponent.numCols; ++i)
-      this.fields[i] = false;
+    for(let row=0; row<BoardComponent.numRows; ++row)
+      for(let col=0; col<BoardComponent.numCols; ++col)
+        this.fields[row][col] = false;
   }
 
 }
