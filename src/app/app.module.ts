@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FieldComponent } from './field/field.component';
 import { BoardComponent } from './board/board.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FieldComponent,
-    BoardComponent
+    BoardComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,

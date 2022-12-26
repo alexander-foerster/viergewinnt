@@ -7,4 +7,7 @@ import { FieldComponent } from './field/field.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  player1Name = "Player 1";
+  player2Name = "Player 2";
 }

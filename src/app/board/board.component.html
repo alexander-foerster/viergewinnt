@@ -1,5 +1,3 @@
-<p>The board consists of fields</p>
-
 <div>
     <div *ngFor="let row of fields; let rowIndex = index">
         <app-field *ngFor="let field of fields[rowIndex]; let colIndex = index" [onoff]="fields[rowIndex][colIndex]" (change)="flipValue(rowIndex, colIndex)"></app-field>
