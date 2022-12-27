@@ -1,14 +1,16 @@
-<div>
-    <div *ngFor="let row of fields; let rowIndex = index">
-        <app-field *ngFor="let field of fields[numRows - rowIndex - 1]; let colIndex = index" [onoff]="fields[numRows - rowIndex - 1][colIndex]" (change)="legeStein(colIndex)"></app-field>
+<div class="d-flex">
+    <div class="p-3 mt-4 mx-auto" style="background-color: blue">
+        <div *ngFor="let row of fields; let rowIndex = index">
+            <app-field *ngFor="let field of fields[numRows - rowIndex - 1]; let colIndex = index" [token]="fields[numRows - rowIndex - 1][colIndex]" (change)="legeStein(colIndex)"></app-field>
+        </div>
     </div>
 </div>
 
-<div style="background-color: beige; padding: 0.5em; margin-top: 1em;">
-    <span style="margin-right: 2cm">{{currentPlayerName}} ist am Zug.</span>
-    <button type="button" class="btn btn-danger" (click)="reset()">Spiel Zurücksetzen</button>
-</div>
-
-<div>
-    
+<div class="d-flex">
+    <div class="mt-4 mx-auto align-items-center" style="min-width: 35em; border-style: solid; border-radius: 3px;  border-width: 1px;  border-color: blue; padding: 0.5em;">
+        <div class="d-flex align-items-center" style="justify-content: space-between;">
+            <span style="margin-right: 3em">{{currentPlayerName}} ist am Zug.</span>
+            <button type="button" class="btn btn-danger" (click)="reset()">Spiel zurücksetzen</button>
+        </div>
+    </div>
 </div>

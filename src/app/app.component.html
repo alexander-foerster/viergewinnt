@@ -1,14 +1,16 @@
-<h1>Vier Gewinnt</h1>
+<h1 class="row justify-content-center py-4">Vier Gewinnt</h1>
 
-<div class="row">
-  <div class="col-sm-4">
+<div class="row justify-content-center">
+  <div class="col-lg-4">
     <app-player [(playerName)]="player1Name" [playerNumber]="1"></app-player>
   </div>
 </div>
-<div class="row">
-  <div class="col-sm-4">
-    <app-player [playerName]="player2Name" [playerNumber]="2"></app-player>
+<div class="row justify-content-center">
+  <div class="col-lg-4">
+    <app-player [(playerName)]="player2Name" [playerNumber]="2"></app-player>
   </div>
 </div>
 
-<app-board [player1Name]="player1Name" [player2Name]="player2Name"></app-board>
+<app-board
+  [player1Name]="player1Name" [player2Name]="player2Name">
+</app-board>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Token } from '../Token';
 
 @Component({
   selector: 'app-board',
@@ -10,7 +11,7 @@ export class BoardComponent {
   static readonly numCols = 7;
 
   // Zeile x Spalte
-  fields: boolean[][] = new Array(BoardComponent.numRows).fill(false).map(x => Array(BoardComponent.numCols).fill(false));
+  fields: Token[][] = new Array(BoardComponent.numRows).fill(null).map(x => Array(BoardComponent.numCols).fill(null));
 
   private gelbIstAmZug = true;
 
@@ -21,7 +22,7 @@ export class BoardComponent {
   player2Name = 'Player 2';
 
   public ngOnInit() {
-    this.fields[0][2] = true;
+    
   }
   
   get numRows() {
@@ -35,20 +36,17 @@ export class BoardComponent {
       return this.player2Name;
   }
 
-  flipValue(rowIndex: number, colIndex: number) {
-    this.fields[rowIndex][colIndex] = !this.fields[rowIndex][colIndex];
-  }
-  
   // gibt true zurück, wenn der Stein gelegt werden konnte
   legeStein(colIndex: number): boolean {
     let row=0;
     for(; row<BoardComponent.numRows; ++row) {
-      if(this.fields[row][colIndex] == false)
+      if(this.fields[row][colIndex] == null)
         break;
     }
     
     if(row<BoardComponent.numRows) {
-      this.fields[row][colIndex] = true;
+      this.fields[row][colIndex] = new Token(this.gelbIstAmZug);
+      this.gelbIstAmZug = !this.gelbIstAmZug;
       return true;
     } else
       return false;
@@ -56,9 +54,8 @@ export class BoardComponent {
   }
 
   reset() {
-    for(let row=0; row<BoardComponent.numRows; ++row)
-      for(let col=0; col<BoardComponent.numCols; ++col)
-        this.fields[row][col] = false;
+    this.fields = new Array(BoardComponent.numRows).fill(null).map(x => Array(BoardComponent.numCols).fill(null));
+    this.gelbIstAmZug = true;
   }
 
 }

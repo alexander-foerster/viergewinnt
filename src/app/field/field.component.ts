@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Token } from '../Token';
 
 @Component({
   selector: 'app-field',
@@ -8,18 +9,21 @@ import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from
 export class FieldComponent {
 
   @Input()
-  onoff: boolean = false;
+  token?: Token;
   public color = 'blue';
 
   @Output()
   change = new EventEmitter();
 
   private updateColor() {
-    if(this.onoff) {
-      this.color = 'red'
+    if(this.token != null) {
+      if(this.token.istGelb)
+        this.color = 'yellow';
+      else 
+        this.color = 'red';
     }
     else {
-      this.color = 'black'
+      this.color = 'white'
     }
   }
 

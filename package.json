@@ -10,7 +10,10 @@
     "heroku-postbuild": "ng build --configuration \"production\""
   },
   "private": true,
-  "engines": { "node": "18.12.1", "npm": "6.14.17"},
+  "engines": {
+    "node": "18.12.1",
+    "npm": "6.14.17"
+  },
   "start": "node server.js",
   "dependencies": {
     "@angular/animations": "^15.0.0",
@@ -26,6 +29,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.0",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
     "express": "^4.18.2",
     "path": "^0.12.7",
     "rxjs": "~7.5.0",
