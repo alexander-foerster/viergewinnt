@@ -9,9 +9,10 @@ export class PlayerComponent {
 
   @Input() playerNumber = 0;
 
-  @Input() playerName = '';
-
+  @Input() playerName?: string;
   @Output() playerNameChange = new EventEmitter<string>();
 
-
+  acceptChanges() {
+    this.playerNameChange.emit(this.playerName);
+  }
 }

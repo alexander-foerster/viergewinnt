@@ -7,8 +7,8 @@
 </div>
 <div class="row">
   <div class="col-sm-4">
-    <app-player [(playerName)]="player2Name" [playerNumber]="2"></app-player>
+    <app-player [playerName]="player2Name" [playerNumber]="2"></app-player>
   </div>
 </div>
 
-<app-board></app-board>
+<app-board [player1Name]="player1Name" [player2Name]="player2Name"></app-board>

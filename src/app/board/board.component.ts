@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -12,12 +12,27 @@ export class BoardComponent {
   // Zeile x Spalte
   fields: boolean[][] = new Array(BoardComponent.numRows).fill(false).map(x => Array(BoardComponent.numCols).fill(false));
 
+  private gelbIstAmZug = true;
+
+  @Input()
+  player1Name = 'Player 1';
+
+  @Input()
+  player2Name = 'Player 2';
+
   public ngOnInit() {
     this.fields[0][2] = true;
   }
   
   get numRows() {
     return BoardComponent.numRows;
+  }
+
+  get currentPlayerName() {
+    if(this.gelbIstAmZug)
+      return this.player1Name;
+    else
+      return this.player2Name;
   }
 
   flipValue(rowIndex: number, colIndex: number) {
